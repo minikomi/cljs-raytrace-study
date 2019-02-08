@@ -2,6 +2,4 @@
  :init-fns [raytrace.core/init]
  :compiler-options {:asset-path "/js/main.out"
                     :language-out :ecmascript5
-                    :libs ["src/ecs/EntityManager.js"
-                           "src/ecs/Entity.js"
-                           "src/ecs/ReusePool.js"]}}
+                    :libs []}}
