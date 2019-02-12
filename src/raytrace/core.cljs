@@ -28,11 +28,11 @@
 (defn create-image [ctx origin {:keys [intersect?]} t]
   (doseq [y (range H)]
     (doseq [x (range W)]
-      (let [dx (* (/ (* 2 (+ x 0.5)) W)
-                  (/ (Math/tan (/ FOV 2)))
+      (let [dx (* (- (/ (* 2 (+ x 0.5)) W) 1)
+                  (Math/tan (/ FOV 2))
                   (/ W H))
-            dy (* (- (/ (* 2 (+ y 0.5)) H))
-                  (Math/tan (/ FOV 2)))]
+            dy (- (* (- (/ (* 2 (+ y 0.5)) H) 1)
+                     (Math/tan (/ FOV 2))))]
         (if (boolean (intersect? origin (m/normalize (vec3 dx dy -1))))
           (set-pixel x y [20 20 20])
           (set-pixel x y [120 255 255])))))
@@ -83,7 +83,7 @@
            (m/* dir |intersection-to-origin|)))))})
 
 (defn update-raytrace [ctx t fid]
-  (let [s (create-sphere (vec3 20 -10 -16) 4)
+  (let [s (create-sphere (vec3 -3 0 -8) 2)
         origin (vec3 0 0 0)]
     (create-image ctx origin s t)))
 
