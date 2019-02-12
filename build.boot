@@ -20,6 +20,7 @@
                  ;; Frontend
                  [reagent "0.8.1"]
                  [binaryage/oops "0.6.4"]
+                 [thi.ng/geom "1.0.0-RC3"]
                  [cljsjs/pixi "4.7.0-0"]])
 
 
